@@ -6,32 +6,52 @@ int main(){
 
 
 
-    int matrix[5][5] = {
-            {00, 01, 02, 03, 04},
-            {10, 11, 12, 13, 14},
-            {20, 21, 22, 23, 24},
-            {30, 31, 32, 33, 34},
-            {40, 41, 42, 43, 44},
+    int matrix[4][4] = {
+            {11, 12, 13, 14},
+            {21, 22, 23, 24},
+            {31, 32, 33, 34},
+            {41, 42, 43, 44},
     };
 
-    for (int i = 0; i < 5; i++)
+    int rows = sizeof matrix / sizeof matrix[0];
+    int cols = sizeof matrix[0] / sizeof(int);
+    int rows2 = rows - 1;
+
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < 5; i++)
+        for (int j = 0; j < cols; j++)
         {
             cout << matrix[i][j] << ",";
         }
         cout << endl;
     }
+
+    cout << "-------------------" << endl;
     
+    for (int i = 0; i <= rows2 / 2; i++)
+    {
+        for (int j = i; j < rows2; j++)
+        {
+            int pos1 = matrix[i][j];
+            int pos2 = matrix[j][rows2 - i];
+            int pos3 = matrix[rows2 - i][rows2 - j];
+            int pos4 = matrix[rows2 - j ][i];
+
+            matrix[j][rows2 - i] = pos1;
+            matrix[rows2 -i][rows2 - j] = pos2;
+            matrix[rows2 - j][i] = pos3;
+            matrix[i][j] = pos4;
+        }
+    }
+
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            cout << matrix[i][j] << ",";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
-    
-
-//{
-//  {40, 30, 20, 10, 00}
-//  {41, 31, 21, 11, 01}
-//  {42, 32, 22, 12, 02}
-//  {43, 33, 23, 13, 03}
-//  {44, 34, 24, 14, 04}
-//}
