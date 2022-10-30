@@ -26,11 +26,13 @@ int main(){
         cout << endl;
     }
 
+    
+    while(true){
     cout << "-------------------" << endl;
     
     for (int i = 0; i <= rows2 / 2; i++)
     {
-        for (int j = i; j < rows2; j++)
+        for (int j = i; j < rows2 - i; j++)
         {
             int pos1 = matrix[i][j];
             int pos2 = matrix[j][rows2 - i];
@@ -51,6 +53,7 @@ int main(){
             cout << matrix[i][j] << ",";
         }
         cout << endl;
+    }
     }
 
     return 0;
