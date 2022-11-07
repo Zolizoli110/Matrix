@@ -4,7 +4,6 @@
 using namespace std;
 
 Matrix::Matrix(){};
-Matrix::~Matrix(){};
 
 int Matrix::getRows(){
     return (sizeof matrix / sizeof matrix[0]) - 1;
@@ -17,15 +16,12 @@ int Matrix::getCols(){
 void Matrix::rotateClockwise(){
     for(int i = 0; i <= getRows() / 2; i++){
         for(int j = i; j < getRows() - i; j++){
-            int pos1 = matrix[i][j];
-            int pos2 = matrix[j][getRows() - i];
-            int pos3 = matrix[getRows() - i][getRows() - j];
-            int pos4 = matrix[getRows() - j][i];
+            int tmp= matrix[i][j];
 
-            matrix[i][j]                        = pos4;
-            matrix[j][getRows() - i]            = pos1;
-            matrix[getRows() - i][getRows() - j]= pos2;
-            matrix[getRows() - j][i]            = pos3;
+            matrix[i][j]                        = matrix[getRows() - j][i];
+            matrix[getRows() - j][i]            = matrix[getRows() - i][getRows() - j];
+            matrix[getRows() - i][getRows() - j]= matrix[j][getRows() - i];
+            matrix[j][getRows() - i]            = tmp;
         }
     }
 }
@@ -33,16 +29,12 @@ void Matrix::rotateClockwise(){
 void Matrix::rotateCounterClockwise(){
     for(int i = 0; i <= getRows() / 2; i++){
         for(int j = i; j < getRows() - i; j++){
-            int pos1 = matrix[i][j];
-            int pos2 = matrix[j][getRows() - i];
-            int pos3 = matrix[getRows() - i][getRows() - j];
-            int pos4 = matrix[getRows() - j][i];
+            int tmp = matrix[i][j];
 
- 
-            matrix[i][j]                        = pos2;
-            matrix[j][getRows() - i]            = pos3;
-            matrix[getRows() - i][getRows() - j]= pos4;
-            matrix[getRows() - j][i]            = pos1;
+            matrix[i][j]                        = matrix[j][getRows() - i];
+            matrix[j][getRows() - i]            = matrix[getRows() - i][getRows() - j];;
+            matrix[getRows() - i][getRows() - j]= matrix[getRows() - j][i];
+            matrix[getRows() - j][i]            = tmp;
         }
     }
 }

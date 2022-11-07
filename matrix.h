@@ -12,11 +12,9 @@ class Matrix{
             {41, 42, 43, 44}
         };
         Matrix();
-        ~Matrix();
         int getRows();
         int getCols();
         void rotateClockwise();
         void rotateCounterClockwise();
         void write();
-
 };
